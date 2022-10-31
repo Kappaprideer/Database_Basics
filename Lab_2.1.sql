@@ -44,7 +44,30 @@ FROM [Order Details]
 GROUP BY OrderID
 
 -- 4.
-SELECT *
-FROM Orders
-WHERE YEAR(OrderDate)=1997
+SELECT Shippers.CompanyName, COUNT(OrderID)
+FROM Shippers, Orders
+WHERE ShipperID = Orders.ShipVia
+GROUP BY Shippers.CompanyName
 
+-- 5.
+SELECT TOP 1 Shippers.CompanyName, COUNT(OrderID)
+FROM Shippers, Orders
+WHERE ShipperID = Orders.ShipVia AND YEAR(OrderDate)=1997
+GROUP BY Shippers.CompanyName
+ORDER BY 2 DESC
+
+-- Część 3.
+
+-- 1. (nie wiem czy o to chodziło)
+SELECT Orders.OrderID, SUM([Order Details].Quantity)
+FROM Orders, [Order Details]
+WHERE Orders.OrderID=[Order Details].OrderID
+GROUP BY Orders.OrderID HAVING SUM(Quantity)>5
+ORDER BY 2
+
+-- 2.
+SELECT Customers.CompanyName, COUNT(Orders.OrderID)
+FROM Customers, Orders, [Order Details]
+WHERE Customers.CustomerID=Orders.CustomerID AND YEAR(OrderDate)=1998
+GROUP BY CompanyName HAVING COUNT(OrderID)>8
+ORDER BY SUM(Quantity*UnitPrice)
