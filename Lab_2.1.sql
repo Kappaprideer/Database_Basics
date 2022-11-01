@@ -58,16 +58,16 @@ ORDER BY 2 DESC
 
 -- Część 3.
 
--- 1. (nie wiem czy o to chodziło)
-SELECT Orders.OrderID, SUM([Order Details].Quantity)
+-- 1.
+SELECT Orders.OrderID, COUNT([Order Details].OrderID)
 FROM Orders, [Order Details]
 WHERE Orders.OrderID=[Order Details].OrderID
-GROUP BY Orders.OrderID HAVING SUM(Quantity)>5
-ORDER BY 2
+GROUP BY Orders.OrderID HAVING COUNT([Order Details].OrderID)>5
+ORDER BY 2 DESC
 
 -- 2.
-SELECT Customers.CompanyName, COUNT(Orders.OrderID)
+SELECT Customers.CompanyName, COUNT([Order Details].OrderID) AS 'Number of orders', SUM(Quantity*UnitPrice*(1-Discount)) AS 'Price sum'
 FROM Customers, Orders, [Order Details]
-WHERE Customers.CustomerID=Orders.CustomerID AND YEAR(OrderDate)=1998
-GROUP BY CompanyName HAVING COUNT(OrderID)>8
-ORDER BY SUM(Quantity*UnitPrice)
+WHERE Customers.CustomerID=Orders.CustomerID AND YEAR(OrderDate)=1998 AND [Order Details].OrderID=Orders.OrderID AND Orders.ShippedDate is not null
+GROUP BY CompanyName HAVING COUNT([Order Details].OrderID)>8
+ORDER BY 3 DESC

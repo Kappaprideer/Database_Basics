@@ -85,3 +85,30 @@ WHERE (Customers.Country LIKE 'Argentina') AND (Orders.CustomerID=Customers.Cust
 -- Order by
 
 -- 1.
+SELECT CompanyName, Country
+FROM Customers
+ORDER BY 2,1
+
+-- 2.
+SELECT CategoryName, ProductName, UnitPrice
+FROM Products, Categories
+WHERE Products.CategoryID=Categories.CategoryID
+ORDER BY 1, UnitPrice DESC
+
+-- 3.
+SELECT CompanyName, Country
+FROM Customers
+WHERE (Country LIKE 'Japan') OR (Country LIKE 'Italy')
+ORDER BY 2, 1
+
+-- Obliczanie wartości, napisy
+
+-- 1.
+SELECT OrderID, UnitPrice*Quantity*(1-Discount) AS 'Wartosc pozycji'
+FROM [Order Details]
+WHERE OrderID=10250
+
+-- 2.
+SELECT CompanyName, Phone + ', ' + Fax AS 'Phone number and Fax'
+FROM Suppliers
+ORDER BY CompanyName
