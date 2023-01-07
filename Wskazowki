@@ -1,0 +1,46 @@
+Projekt PBD:
+
+1. Opis problemu:
+	2.1. Czy usługi świadczone są w Polsce? - zrobić na ten temat założenie
+	
+2. Ogólne informacje:
+	2.1. Formularz zamówienia - Brak konieczności implementacji. Ma być <możliwość> obsługi takowych
+	2.2. Ograniczona liczba stolików, <w tym miejsc siedzących>
+	2.3. Rezerwacja stolika dla co najmniej dwóch osób
+	2.4. " Firma - ktoś kto bierze fakturę"
+	2.5. Uproszczenie: brak możliwości dostawy, odbiór na miejscu lub na wynos, ale w lokalu
+
+3. Menu:
+	3.1. "Z dziennym wyprzedzeniem" - zrobić założenie odnośnie godziny, np. 23:59
+	3.2. "Co najmniej połowa pozycji jest zmieniana co najmniej raz na dwa tygodnie" - zadbać o rotację dań
+		3.2.1 Nad rotacją panuje software - robi zmiany automatycznie
+		3.2.2 Software jedynie podpowiada - daje monity
+		-> Zrobić założenie o zmianach dań - automatyczne czy wymuszane, liberalne czy twarde.
+	3.3. "W dniach czwartek-piątek-sobota istnieje możliwość wcześniejszego zamówienia dań zawierających owoce morza" - 
+		indywidualny import; owoce morza można zamawiać tylko z wyprzedzeniem, 
+		do poniedziałku poprzedzającego tygodnia
+	
+4. Rezerwacja stolika:
+	4.1. Rezerwacji przez Internet można dokonać, gdy wartość zamówienia wyniesie więcej niż ustalone WZ,
+		tylko przez klientów, którzy złożyli wcześniej co najmniej ustalone WK zamówień
+		(trzeba trzymać o tym informacje w bazie i zliczać)
+	4.2. "Informacja o rezerwacji jest wysyłana do klienta po akceptacji przez obsługę"
+		4.2.1. Trzeba przemyśleć strukturę ogarniającą stoliki - trzeba wiedzieć które stoliki są zajęte, szacować zajętość 				stolików
+		4.2.2. Klient składa rezerwację, ale ktoś z obsługi musi ją potwierdzić - trzeba przygotować do tego strukturę
+		4.2.3. Obsługa - czyli kto? Grupy użytkowników - kelner, osoba "przy okienku" itp. 
+	4.3. Rezerwacja stolików dla firm - dwa sposoby: wszystkie na firmę (na nazwę firmy) 
+		lub każdy dla konkretnych pracowników (imiennie) - trzeba przewidzieć strukturę rezerwacji 
+		4.2.1. Imienna - kto ją wprowadza? Pracownik restauracji czy klient firmowy
+		4.2.2. Podanie nazwisk pracownikom (mailowo) czy dostęp klienta do interfejsu bazy, który pozwala podać ustawienie 				explicite
+
+5. Rabaty:
+	5.1. Podejście statyczne: Warunki rabatów są ustalone
+	5.2. Podejście dynamiczne, np. z dokładnością do inflacji, wraz z informacjami o terminach obowiązywania
+	5.3. Dwa rabaty: Za liczbę zamówień i za duży obrót. Rabat drugiego rodzaju ma datę ważności - trzeba to gdzieś monitorować
+	5.4. Zniżki nie łączą się - jak wybrać, z której korzystać? Może po prostu większa zniżka najpierw..
+	
+6. Raporty:
+	6.1. Forma raportów jest ustalana indywidualnie
+	6.2. Analizy obciążenia stolików oraz rabatów
+	6.3. Raporty dotyczące obciążenia lokalu pozwalają prognozować, planować, rozważać ekspansję lokalu, ustalać politykę rabatową
+	
